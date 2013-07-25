@@ -2,7 +2,6 @@
 // 過去入試問題平成24年8月
 
 #include <stdio.h>
-#include <string.h>
 
 #define SIZE 100
 
