@@ -1,6 +1,8 @@
 // 筑波大学院入試過去問平成23年8月
+// 問題(3)が不完全であるため完成していない
 
 #include <stdio.h>
+#include <string.h>
 
 #define N 100
 
@@ -11,10 +13,11 @@ typedef struct {
 
 void intToBigDecimal(int i, BigDecimal *d);
 void shiftLeftBigDecimal(BigDecimal *d);
-// void strToBigDecimal(char *str, BigDecimal *d);
+void strToBigDecimal(char *str, BigDecimal *d);
 
 int main() {
   int number = 12345;
+  char *char_number = "12345";
   int i;
   char *str;
   BigDecimal d;
@@ -41,9 +44,7 @@ int main() {
 
   printf("\n");
 
-  str = "12345";
-
-  printf("%d\n", *str);
+  strToBigDecimal(char_number, &d);
 }
 
 void intToBigDecimal(int i, BigDecimal *d) {
@@ -67,13 +68,16 @@ void shiftLeftBigDecimal(BigDecimal *d) {
 
   d->digits[0] = 0;
 }
-/*
-   void strToBigDecimal(char *str, BigDecimal *d) {
-   intToBigDecimal(0, d);
-   do {
-   shiftLeftBigDecimal(d);
-   d->digits[0] = ;
-   str++;
-   } while ();
-   }
-   */
+
+void strToBigDecimal(char *str, BigDecimal *d)
+{
+  intToBigDecimal(0, d);
+  do {
+    shiftLeftBigDecimal(d);
+    printf("%p\n", &str[0]);
+    //d->digits[0] = atoi(str[0]);
+    str++;
+  } while (strcmp(str, "\0") != 0);
+}
+
+
